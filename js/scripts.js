@@ -1,24 +1,28 @@
-// Step 1: Create an empty array to store Pokémon data
 let pokemonList = [];
-
-// Step 2: Add Pokémon objects to the array
 pokemonList = [
-  {
-    name: "Bulbasaur",
-    height: 7,
-    types: ["grass", "poison"]
-  },
-  {
-    name: "Charmander",
-    height: 6,
-    types: ["fire"]
-  },
-  {
-    name: "Caterpie",
-    height: 3,
-    types: ["bug"]
-  }
+    {
+        name: "Bulbasaur",
+        height: 7,
+        types: ["grass", "poison"]
+    },
+    {
+        name: "Charmander",
+        height: 6,
+        types: ["fire"]
+    },
+    {
+        name: "Caterpie",
+        height: 3,
+        types: ["bug"]
+    }
 ];
 
-// Log the Pokémon list to verify the setup
-console.log(pokemonList);
+// Loop through the pokemonList and display name + height
+for (let i = 0; i < pokemonList.length; i++) {
+    let description = `${pokemonList[i].name} (height: ${pokemonList[i].height})`;
+    // Check if Pokémon's height is above a certain threshold
+    if (pokemonList[i].height > 6) {
+        description += " - Wow, that’s big!";
+    }
+    document.write(`${description}<br>`);
+}
