@@ -17,12 +17,14 @@ pokemonList = [
     }
 ];
 
-// Loop through the pokemonList and display name + height
-for (let i = 0; i < pokemonList.length; i++) {
-    let description = `${pokemonList[i].name} (height: ${pokemonList[i].height})`;
+// Use forEach to loop through the pokemonList
+pokemonList.forEach(function(pokemon) {
+    let description = `${pokemon.name} (height: ${pokemon.height})`;
+
     // Check if Pokémon's height is above a certain threshold
-    if (pokemonList[i].height > 6) {
-        description += " - Wow, that’s big!";
+    if (pokemon.height > 6) {
+        description += " - <span class='big'>Wow, that’s big!</span>";
     }
-    document.write(`${description}<br>`);
-}
+
+    document.write(`<p class="pokemon">${description}</p>`);
+});
