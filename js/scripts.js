@@ -1,5 +1,5 @@
 // Wrap pokemonList in an IIFE
-let pokemonRepository = function () {
+let pokemonRepository = (function () {
     let pokemonList = [
         {
             name: "Bulbasaur",
@@ -19,9 +19,7 @@ let pokemonRepository = function () {
     ];
 
     function add(pokemon) {
-        // Validate that input is an object
         if (typeof pokemon === "object" && pokemon !== null) {
-            // Check required keys
             let keys = Object.keys(pokemon);
             if (
                 keys.includes("name") &&
@@ -43,23 +41,29 @@ let pokemonRepository = function () {
 
     function findByName(name) {
         return pokemonList.filter(pokemon => pokemon.name === name);
-    }    
+    }
+
+    function addListItem(pokemon) {
+        let pokemonListElement = document.querySelector("ul.pokemon-list");
+
+        let listItem = document.createElement("li");
+
+        let button = document.createElement("button");
+        button.innerText = pokemon.name;
+        button.classList.add("pokemon-button");
+
+        listItem.appendChild(button);
+        pokemonListElement.appendChild(listItem);
+    }
 
     return {
         add: add,
         getAll: getAll,
-        findByName: findByName
+        findByName: findByName,
+        addListItem: addListItem
     };
-}();
+})();
 
-// Use forEach to loop through the pokemonList
 pokemonRepository.getAll().forEach(function (pokemon) {
-    let description = `${pokemon.name} (height: ${pokemon.height})`;
-
-    // Check if Pokémon's height is above a certain threshold
-    if (pokemon.height > 6) {
-        description += " - <span class='big'>Wow, that’s big!</span>";
-    }
-
-    document.write(`<p class="pokemon">${description}</p>`);
+    pokemonRepository.addListItem(pokemon);
 });
