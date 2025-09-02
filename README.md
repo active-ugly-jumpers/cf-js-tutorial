@@ -9,12 +9,12 @@ Build a small web application with **HTML**, **CSS**, and **JavaScript** that lo
 This project is part of the learning process to create a fully functioning JavaScript web application.  
 Since building a custom API is not yet covered in the course, this app uses an external data source for Pokémon information.
 
-The project focuses not only on JavaScript functionality but also on delivering clean, user-friendly HTML and CSS, resulting in an application that is both functional and aesthetically pleasing.
+The focus is on writing modular JavaScript, working with asynchronous data (Promises / Fetch), and applying a consistent design system with reusable CSS variables.
 
 ## Features
-- Load Pokémon data from an external API
-- Display a list of Pokémon with key details
-- View detailed information about individual Pokémon
+- Fetch and display a list of Pokémon from the [PokéAPI](https://pokeapi.co/)
+- View detailed Pokémon information (image, height, types, etc.) in a modal dialog
+- Responsive design for desktop and mobile
 
 ## Technologies Used
 - HTML5
