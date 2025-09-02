@@ -1,20 +1,45 @@
+:root {
+    /* Colors */
+    --color-bg: #d8dbde;
+    --color-surface: #efefef;
+    --color-text: #111;
+    --color-text-hover: #fff;
+    --color-accent: #6d161d;
+    --color-accent-secondary: #ff00ae;
+    --color-overlay: rgba(0, 0, 0, 0.5);
+
+    /* Fonts */
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-button: 'VT323', monospace;
+
+    /* Layout */
+    --radius: 12px;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Base */
 body {
-    margin: 2rem;
-    font-family: 'Inter', sans-serif;
-    background: #d8dbde;
-    color: #111;
+    margin: var(--space-lg);
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
     line-height: 1.5;
     box-sizing: border-box;
     text-align: center;
 }
 
 h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-heading);
     font-size: 2.5rem;
-    color: #6d161d;
-    margin-bottom: 2rem;
+    color: var(--color-accent);
+    margin-bottom: var(--space-lg);
 }
 
+/* Pokémon list */
 .pokemon-list {
     list-style-type: none;
     padding: 0;
@@ -23,18 +48,18 @@ h1 {
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 
+/* Pokémon buttons */
 .pokemon-button {
-    font-family: 'VT323', monospace;
+    font-family: var(--font-button);
     font-size: 1.25rem;
-    background: #efefef;
+    background: var(--color-surface);
     border: none;
     padding: 0.75rem 1.5rem;
-    margin: 0.5rem 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: var(--space-sm) 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease;
     width: 100%;
@@ -43,15 +68,96 @@ h1 {
 }
 
 .pokemon-button:hover {
-    background: #6d161d;
-    color: #fff;
+    background: var(--color-accent);
+    color: var(--color-text-hover);
     transform: scale(1.05);
+}
+
+/* Overlay container */
+#modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--space-md);
+    background: var(--color-overlay);
+    z-index: 999;
+    overflow: auto;
+    display: grid;
+    text-align: center;
+}
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+    display: block;
+}
+
+/* Modal */
+.modal {
+    margin: auto;
+    background: var(--color-surface);
+    padding: var(--space-lg);
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Close button */
+.modal-close {
+    float: right;
+    border: none;
+    background: none;
+    font-size: 1.75rem;
+    color: var(--color-accent-secondary);
+    cursor: pointer;
+    font-family: var(--font-button);
+}
+
+/* Modal title */
+.modal h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-accent);
+}
+
+/* Modal text */
+.modal p {
+    margin-bottom: var(--space-md);
+}
+
+/* Pokémon image */
+.modal img {
+    max-width: 250px;
+    width: 100%;
+    display: block;
+    margin: var(--space-md) auto;
+}
+
+/* Small fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive styles */
 @media (max-width: 600px) {
     body {
-        margin: 1rem;
+        margin: var(--space-md);
     }
 
     h1 {
@@ -61,5 +167,17 @@ h1 {
     .pokemon-button {
         font-size: 1rem;
         padding: 0.5rem 1rem;
+    }
+
+    .modal {
+        padding: var(--space-md);
+    }
+
+    .modal h1 {
+        font-size: 1.5rem;
+    }
+
+    .modal-close {
+        font-size: 1.5rem;
     }
 }
