@@ -83,14 +83,16 @@ let pokemonRepository = (function () {
         loadDetails(pokemon).then(() => {
             // fill modal content
             const titleEl = document.getElementById("pokemonModalLabel");
-            const textEl = document.getElementById("pokemonModalText");
+            const heightEl = document.getElementById("pokemonModalHeight");
+            const typesEl = document.getElementById("pokemonModalTypes");
             const imgEl = document.getElementById("pokemonModalImg");
 
             // Capitalize name (Bootstrap text-capitalize handles visual, but set title nicely too)
             const niceName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
             titleEl.textContent = niceName;
-            textEl.textContent = `Height: ${pokemon.height} | Types: ${pokemon.types.join(", ")}`;
+            heightEl.textContent = `Height: ${pokemon.height}`;
+            typesEl.textContent = `Types: ${pokemon.types.join(", ")}`;
             imgEl.src = pokemon.imageUrl || "";
             imgEl.alt = niceName;
 
