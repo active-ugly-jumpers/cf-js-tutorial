@@ -26,12 +26,12 @@ let pokemonRepository = (function () {
         let pokemonListElement = document.querySelector("div.pokemon-list");
 
         let listItem = document.createElement("li");
-        listItem.classList.add("list-group-item", "p-2"); // Bootstrap list group item
+        listItem.classList.add("list-group-item", "bg-transparent", "border-0");
 
         let button = document.createElement("button");
         button.innerText = pokemon.name;
         button.type = "button";
-        button.classList.add("btn", "btn-primary", "btn-block", "text-capitalize");
+        button.classList.add("btn", "btn-lg", "btn-dark", "btn-block", "text-capitalize");
         button.setAttribute("data-toggle", "modal");
         button.setAttribute("data-target", "#pokemonModal");
 
@@ -98,6 +98,12 @@ let pokemonRepository = (function () {
         });
     }
 
+    function search(query) {
+        return pokemonList.filter(pokemon =>
+            pokemon.name.toLowerCase().includes(query.toLowerCase())
+        );
+    }
+
     return {
         add: add,
         getAll: getAll,
@@ -105,6 +111,7 @@ let pokemonRepository = (function () {
         loadList: loadList,
         loadDetails: loadDetails,
         showDetails: showDetails,
+        search: search,
     };
 })();
 
@@ -112,5 +119,54 @@ let pokemonRepository = (function () {
 pokemonRepository.loadList().then(() => {
     pokemonRepository.getAll().forEach(pokemon => {
         pokemonRepository.addListItem(pokemon);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector("#pokemon-search");
+    const pokemonListElement = document.querySelector(".pokemon-list");
+
+    searchInput.addEventListener("input", function () {
+        const query = searchInput.value.trim();
+
+        // Clear the list
+        pokemonListElement.innerHTML = "";
+
+        // Get filtered results from repository
+        let results = pokemonRepository.search(query);
+
+        // Render them
+        results.forEach(pokemon => {
+            pokemonRepository.addListItem(pokemon);
+        });
+    });
+});
+
+document.querySelector("#clear-search").addEventListener("click", () => {
+    const searchInput = document.querySelector("#pokemon-search");
+    searchInput.value = "";
+    const pokemonListElement = document.querySelector(".pokemon-list");
+    pokemonListElement.innerHTML = "";
+    pokemonRepository.getAll().forEach(p => pokemonRepository.addListItem(p));
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const homeSection = document.getElementById("home-section");
+    const aboutSection = document.getElementById("about-section");
+
+    document.getElementById("nav-home").addEventListener("click", e => {
+        e.preventDefault();
+        homeSection.style.display = "block";
+        aboutSection.style.display = "none";
+        document.querySelectorAll(".nav-item").forEach(li => li.classList.remove("active"));
+        e.target.parentElement.classList.add("active");
+    });
+
+    document.getElementById("nav-about").addEventListener("click", e => {
+        e.preventDefault();
+        homeSection.style.display = "none";
+        aboutSection.style.display = "block";
+        document.querySelectorAll(".nav-item").forEach(li => li.classList.remove("active"));
+        e.target.parentElement.classList.add("active");
     });
 });
