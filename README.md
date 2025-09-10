@@ -1,25 +1,27 @@
-# Pokémon Web App
+# Pokédex App
 
-A study project for the CareerFoundry Full-Stack Web Development course.
-
-## Objective
-Build a small web application with **HTML**, **CSS**, and **JavaScript** that loads data from an external API and enables viewing of Pokémon data in detail.
-
-## Context
-This project is part of the learning process to create a fully functioning JavaScript web application.  
-Since building a custom API is not yet covered in the course, this app uses an external data source for Pokémon information.
-
-The focus is on writing modular JavaScript, working with asynchronous data (Promises / Fetch), and applying a consistent design system with reusable CSS variables.
+A simple Pokémon list application built with vanilla JavaScript and Bootstrap. Browse through 150 Pokémon, search by name, and view detailed information in a modal.
 
 ## Features
-- Fetch and display a list of Pokémon from the [PokéAPI](https://pokeapi.co/)
-- View detailed Pokémon information (image, height, types, etc.) in a modal dialog
-- Responsive design for desktop and mobile
+
+- Responsive design with Bootstrap
+- List view of 150 Pokémon
+- Modal popup with Pokémon details (height, types, image)
+- Real-time search functionality
+- Fast loading with API integration
+
+## Demo
+
+[Live Demo on GitHub Pages](https://yourusername.github.io/cf-js-tutorial)
 
 ## Technologies Used
-- HTML5
-- CSS3
-- JavaScript (ES6+)
 
-## Status
-Work in progress as part of the CareerFoundry curriculum.
+- **JavaScript (ES6+)** - Core functionality
+- **Bootstrap 4** - UI framework and responsive design
+- **PokéAPI** - Pokémon data source
+- **HTML5 & CSS3** - Structure and styling
+- **GitHub Pages** - Deployment
+
+## API
+
+This app uses the [PokéAPI](https://pokeapi.co/) to fetch Pokémon data.
