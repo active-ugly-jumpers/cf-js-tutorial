@@ -2,17 +2,20 @@
 
 A simple Pokémon list application built with vanilla JavaScript and Bootstrap. Browse through 150 Pokémon, search by name, and view detailed information in a modal.
 
+
 ## Features
 
-- Responsive design with Bootstrap
-- List view of 150 Pokémon
-- Modal popup with Pokémon details (height, types, image)
-- Real-time search functionality
-- Fast loading with API integration
+- Loads data from the PokéAPI and displays a list of 150 Pokémon on page load
+- Responsive design using Bootstrap 4 for seamless experience on all devices
+- Click any Pokémon to view detailed information (image, height, types) in a modal popup
+- Real-time search to quickly filter Pokémon by name
+- Fast and efficient API integration for smooth browsing
+- Clean, modern UI with custom CSS styling
+- Error-free usage and tested for smooth user experience
 
 ## Demo
 
-[Live Demo on GitHub Pages](https://yourusername.github.io/cf-js-tutorial)
+[Live Demo on GitHub Pages](https://active-ugly-jumpers.github.io/cf-js-tutorial/)
 
 ## Technologies Used
 
